@@ -5,6 +5,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/assets/css/index.css" />
 <!-- ========== 컨텐츠 영역 시작 ========== -->
+<!-- 개인(정현수) 수정버전 입니다. -->
 <div class="content">
 	<!-- 1. 메인배너 3개 -> 슬라이드 화살표, 버튼 구현 -->
 	<div id="main_banner">
