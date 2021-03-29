@@ -26,17 +26,18 @@
 - DBMS : MariaDB
 
 ## 요구사항
-전체 웹사이트 UI 구현 및 수정
-사용자용 쇼핑 사이트 구현
-쇼핑몰 관리자 사이트 구현
+- 전체 웹사이트 UI 구현 및 수정
+- 사용자용 쇼핑 사이트 구현
+- 쇼핑몰 관리자 사이트 구현
 
 ## 프로젝트 시연 페이지
-Production(User) : http://itproject.ezenac.co.kr/surisulsul/
-Production(Manage) : http://itproject.ezenac.co.kr/surisulsul/manage.do
+- Production(User) : http://itproject.ezenac.co.kr/surisulsul/
+- Production(Manage) : http://itproject.ezenac.co.kr/surisulsul/manage.do
 
 ## 참고용 ID & PW
-ID : test@naver.com
-PW : 123qwe!@#
+- ID : test@naver.com
+<br>
+- PW : 123qwe!@#
 
 ## Copyright
 실제 운영을 위한 사이트가 아님에 착오 없으시기 바랍니다.
