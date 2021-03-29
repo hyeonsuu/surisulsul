@@ -29,9 +29,6 @@ import study.spring.surisulsul.service.MemberService;
 import study.spring.surisulsul.service.ProductService;
 import study.spring.surisulsul.service.SalesService;
 
-/**
- * Handles requests for the application home page.
- */
 @Slf4j
 @Controller
 public class HomeController {
@@ -55,13 +52,6 @@ public class HomeController {
 	@Value("#{servletContext.contextPath}")
 	String contextPath;
 
-	// private static final Logger logger =
-	// LoggerFactory.getLogger(HomeController.class);
-
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpServletRequest request) {
 		// 세션 값 받아오기
@@ -69,23 +59,24 @@ public class HomeController {
 		Member loginSession = (Member)session.getAttribute("loginInfo");
 		String manageLoginSession = (String) session.getAttribute("manager_id"); //관리자 로그인 세션			
 								
-		// 관리자 세션을 없앤다 (관리자 로그아웃 처리)
-		if(manageLoginSession!=null) { 
+		// 관리자 로그아웃 처리(세션 삭제)
+		if(manageLoginSession != null) { 
 			session.removeAttribute("manager_id");
 			System.out.println("관리자 로그아웃 성공>>>>>>>>>>>>");
 		}
 		
 		// 결과를 저장할 객체
+		// jn_result의 true, false에 따라서 화면 구성이 달라진다.
 		boolean jn_result = false;
 		Member output = null;
 		List<Product> jn_output = null;
 
-		// 로그인 세션이 없을 경우 = 로그인이 안됐을 경우 alert 발생
+		// 로그인 세션이 없을 경우 -> alert 창 
 		if (loginSession == null) {
 			
 			jn_result = false;
 
-		} else { // 로그인 세션이 있는 경우 = 로그인 된 사용자가 있을 경우
+		} else { // 로그인 세션이 있는 경우 -> 로그인 된 사용자가 있을 경우
 			Member member = new Member();
 			member.setId(loginSession.getId());
 
@@ -95,9 +86,10 @@ public class HomeController {
 				e.printStackTrace();
 			}
 			
-			if (output.getJn_result() == null) { // 로그인 O , 주능결과 X
+		/** 로그인 여부, 주능 테스트 여부에 따라 달라지는 화면 */
+			if (output.getJn_result() == null) { // 로그인 O , 주능결과 X -> 주능 테스트 배너 띄움.
 				jn_result = false;
-			} else {// 로그인 O , 주능결과 O
+			} else {// 로그인 O , 주능결과 O -> 로그인 된 사용자의 결과를 확인하고, 그 타입에 맞게 술을 추천함.
 				jn_result = true;
 				
 				// 주능 결과에 맞는 상품 불러오기
@@ -114,7 +106,8 @@ public class HomeController {
 			}
 		}
 
-		// 인기 많은 술 best 4
+		/** 인기 많은 술 best 4 */
+		
 		List<Product> best_output = new ArrayList<Product>();
 		int sales_cnt = 0; // sales테이블에 데이터 수 조회 결과 저장
 
