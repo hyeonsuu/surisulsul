@@ -37,6 +37,7 @@
 	</div>
 </div>
 
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 <script>
 /** 차트 구현 **/
@@ -47,7 +48,8 @@ var itemChart = new Chart(ctx, {
 		labels : ['${dateList[6]}','${dateList[5]}','${dateList[4]}', '${dateList[3]}', '${dateList[2]}', '${dateList[1]}', '${dateList[0]}'],
 		datasets : [ {
 			label : '일 매출액',
-			data : [ ${output.get(6).sum_price}, 
+			data : [ 
+				${output.get(6).sum_price}, 
 				${output.get(5).sum_price}, 
 				${output.get(4).sum_price}, 
 				${output.get(3).sum_price}, 

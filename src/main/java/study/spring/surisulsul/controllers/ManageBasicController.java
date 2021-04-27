@@ -109,33 +109,30 @@ public class ManageBasicController {
 		try {
 			todayIn = memberService.getMemberInTodayCount();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		// 조회한 데이터 저장하기 : 탈퇴 회원 수
 		try {
 			todayOut = memberService.getMemberOutTodayCount();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		// 조회한 데이터 저장하기 : 문의 수
 		try {
 			qnaCount = reviewAndQnaService.getNewQnaCount();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		// 조회한 데이터 저장하기 : 주문 수
 		try {
 			orderCount = manageService.getNewOrderCount();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		/**차트용*/
-		//결과를 담을 객체
+		/** 차트용 */
+		
+		// 결과를 담을 객체
 		List<Order> output = new ArrayList<Order>();		
 		List<String> dateList = new ArrayList<String>();
 		
@@ -182,7 +179,7 @@ public class ManageBasicController {
 			}
 			calendar.add(calendar.DATE, -1);
 		}
-		System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		
 		System.out.println(output);
 		
 

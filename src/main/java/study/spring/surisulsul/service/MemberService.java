@@ -23,7 +23,7 @@ public interface MemberService {
 	// 탈퇴 회원 목록 조회 (관리자용)
 	public List<Member> getOutMemberList(Member input) throws Exception;
 
-	// 전체 회원 수 조회 (관리자용)
+	// 전체 회원 수 조회 (관리자용) 
 	public int getMemberCount(Member input) throws Exception;
 
 	// 탈퇴 회원 수 조회 (관리자용)
