@@ -58,15 +58,14 @@ public class CscenterController {
 		int pageCount = 5;
 		
 		/** 2) 데이터 조회하기 */
-		
-		List<Cscenter> output = null; // 조회 결과가 저장될 객체
-		PageData pageData = null;
+		List<Cscenter> output = null; // 조회 결과가 저장될 객체 -> cscenter에 있는 리스트를 가져온다.
+		PageData pageData = null; 
 		
 		try {
 			// 전체 게시글 수 조회
 			totalCount = cscenterService.getNoticeList(null).size();
 			
-			// 페이지 번호 계산 --> 계산 결과를 로그르 출력
+			// 페이지 번호 계산 --> 계산 결과를 로그로 출력
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 			
 			// SQL의 limit 절에서 사용될 값을 Beans의 static 변수에 저장
@@ -75,9 +74,12 @@ public class CscenterController {
 			
 			// 데이터 조회하기
 			output = cscenterService.getNoticeList(null);
-		}catch(Exception e) {
+			
+			} catch(Exception e) {
+			
 			return webHelper.redirect(null, e.getLocalizedMessage());
-		}
+			
+			}
 		
 		/** 3) View 처리 */
 		model.addAttribute("output", output);
@@ -104,7 +106,7 @@ public class CscenterController {
 			// 전체 게시글 수 조회
 			totalCount = cscenterService.getFaqList(null).size();
 			
-			// 페이지 번호 계산 --> 계산 결과를 로그르 출력
+			// 페이지 번호 계산 --> 계산 결과를 로그로 출력
 			pageData = new PageData(nowPage, totalCount, listCount, pageCount);
 			
 			// SQL의 limit 절에서 사용될 값을 Beans의 static 변수에 저장

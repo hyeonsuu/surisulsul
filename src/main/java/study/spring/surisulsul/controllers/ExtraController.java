@@ -78,8 +78,8 @@ public class ExtraController {
 	@RequestMapping(value = "/juneung.do", method = RequestMethod.GET)
 	public ModelAndView juneung(Model model, HttpServletRequest request) {
 		// 세션값 받아오기
-            //로그인 여부 확인 ->로그인 페이지로 이동
-		//session에서 logininfo 받아오기
+        // 로그인 여부 확인 -> 로그인 페이지로 이동
+		// session에서 logininfo 받아오기
 		HttpSession session = request.getSession();
 		Member loginSession = (Member) session.getAttribute("loginInfo");
 		Member output = null;
@@ -91,7 +91,7 @@ public class ExtraController {
 			String redirectUrl = contextPath+"/account/login.do";
 			return webHelper.redirect(redirectUrl, "로그인이 필요한 페이지입니다.");
 
-		} else { // 로그인 세션이 있는 경우 = 로그인된 사용자가 있다는 뜻
+		} else { // 로그인 세션이 있는 경우 = 로그인 된 사용자가 있다는 뜻
 			
 			Member member = new Member();
 			member.setId(loginSession.getId());
@@ -103,15 +103,17 @@ public class ExtraController {
 			}
            
 			
-            if (loginSession.getJn_result() == null) {// 로그인 O / 주능결과 X
+            if (loginSession.getJn_result() == null) { // 로그인 O / 주능결과 X
 				jn_result = false;
 			} else {// 로그인 O / 주능결과 O
 				jn_result = true;
               }
             }
+		
             model.addAttribute("output", output);
             model.addAttribute("jn_result", jn_result);
 		return new ModelAndView("extra/juneung");
+		
 	}
 	
 	/** 주능 페이지에서 가져온 값 처리 */
@@ -120,17 +122,17 @@ public class ExtraController {
 			@RequestParam(value="drink", required=true) String drink,
 			@RequestParam(value="food", required=true) String food,
 			@RequestParam(value="people", required=true) String people,
-			@RequestParam(value="mood", required=true) String mood){
+			@RequestParam(value="mood", required=true) String mood) {
 		System.out.println("주능_ok 메서드로 연결");
 		
-		//세션정보 가져오기
+		// 세션 정보 가져오기
 		HttpSession session = request.getSession();		
 		Member loginSession = (Member) session.getAttribute("loginInfo");
 		
-		//로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
-		if(loginSession==null) { 
+		// 로그인 세션이 없을 경우 = 로그인 되어있지 않을 경우 alert 발생
+		if(loginSession == null) { 
 			return webHelper.redirect(contextPath+"/account/login.do", "로그인 후 이용해주세요.");
-		}else { // 로그인 세션이 있는 경우 = 로그인된 사용자가 있다는 뜻
+		} else { // 로그인 세션이 있는 경우 = 로그인된 사용자가 있다는 뜻
 			Member input = new Member();
 			String result = null;
 			
@@ -139,18 +141,18 @@ public class ExtraController {
 			if((drink.equals("beer") || drink.equals("wine")) && (food.equals("fruit") || food.equals("snack"))){result = "진달래";}
 			if((drink.equals("soju") || drink.equals("ricewine")) && (food.equals("fruit") || food.equals("snack"))){result = "해바라기";}
 			
-			/**데이터 저장하기*/
+			/** 데이터 저장하기 */
 			input.setId(loginSession.getId());
-			input.setAddress2("222");
+			input.setAddress2("222"); // 뭐지..? 
 			input.setJn_result(result);
 			
 			try {
 				memberService.editJnMember(input);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+		
 		return webHelper.redirect(contextPath+"/mypage/mypage.do", "결과가 나왔습니다!");
 	}
 	

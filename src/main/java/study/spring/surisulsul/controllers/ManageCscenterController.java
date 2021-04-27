@@ -48,12 +48,12 @@ public class ManageCscenterController {
 	@RequestMapping(value = "/manage_cscenter.do", method =  RequestMethod.GET)
 	public ModelAndView manage_cscenter(Model model, HttpServletRequest request) {		
 		
-		//세션값 받아오기
+		// 세션 값 받아오기
 	      HttpSession session = request.getSession();      
 	      String manageLoginSession = (String) session.getAttribute("manager_id");         
 	      
-	      //로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
-	      if(manageLoginSession==null) { 
+	      // 로그인 세션이 없을 경우 = 로그인 되어있지 않을 경우 alert 발생
+	      if(manageLoginSession == null) { 
 	         return webHelper.redirect(contextPath+"/manage.do","관리자 로그인 후 이용해주세요..");
 	      }
 	      
@@ -69,6 +69,7 @@ public class ManageCscenterController {
 			model.addAttribute("output", output);
 		
 		return new ModelAndView("manage/manage_cscenter");
+		
 	}
 	
 	/** 알립니다 & FAQ 등록  */
@@ -139,8 +140,8 @@ public class ManageCscenterController {
 	      HttpSession session = request.getSession();      
 	      String manageLoginSession = (String) session.getAttribute("manager_id");         
 	      
-	      //로그인 세션이 없을 경우 = 로그인되어있지 않을 경우 alert 발생
-	      if(manageLoginSession==null) { 
+	      // 로그인 세션이 없을 경우 = 로그인 되어있지 않을 경우 alert 발생
+	      if(manageLoginSession == null) { 
 	         return webHelper.redirect(contextPath+"/manage.do","관리자 로그인 후 이용해주세요..");
 	      }
 	      
