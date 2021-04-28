@@ -132,7 +132,6 @@ public class MypageController {
 				try {
 					pro_output = productService.jn_ProductList(input);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

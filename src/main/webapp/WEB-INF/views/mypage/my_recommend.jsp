@@ -103,12 +103,16 @@
 		</div>
 				</c:when>
 			</c:choose>
+			
+			
 	<div class="psn_result">
 	<ul class="psn_result_inner">
 	<%--조회 결과에 따른 반복처리 --%>
 	<c:forEach var="item" items="${pro_output}" varStatus="status">
 		<li class="pick_item">
-		<%--상세 페이지로 이동하는 URL --%>
+		
+		<%--상세 페이지로 이동하는 URL 
+		출력된 상품의 item.id에 따른 상세 페이지로 이동한다. --%>
 		<c:url value="/item_details.do" var="viewUrl">
 			<c:param name="prodid" value="${item.id}" />
 		</c:url>
@@ -129,6 +133,7 @@
 	<a href="${pageContext.request.contextPath}/juneung.do" class="btn_yellow">💌주(酒)능 다시보기</a>
 	</div>
 	</c:when>
+	
 		<%--c:otherwise --> 주능 테스트 이력이 없는 경우 -> 주능 결과 DB에 데이터 X --%>
 		<c:otherwise>
 		<div class="psn_title">
