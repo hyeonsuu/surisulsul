@@ -8,11 +8,13 @@
 <%--jstl로 회원의 jn_result가 있는지 검사 --%>
 	<%--주능 검사 이력이 있을 경우 아래 body 태그 출력 --%>
 	<c:when test="${output.jn_result != null }">
-		</body>
-	<%--body 뜨자마자 jn() 함수 호출 -> sweet alert로 재검사 여부 묻기  --%>
-		<body onload="jn();">
-	</c:when>
+</body>
+
+<%--body 뜨자마자 jn() 함수 호출 -> sweet alert로 재검사 여부 묻기 -> juneung.js 에 있음 ! --%>
+<body onload="jn();">
+</c:when>
 </c:choose>
+
 <div id="juneung_content" >
     <h1>술학능력시험 - 주(酒)능</h1>
 

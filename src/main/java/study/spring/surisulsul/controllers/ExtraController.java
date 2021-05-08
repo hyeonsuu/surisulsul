@@ -123,7 +123,6 @@ public class ExtraController {
 			@RequestParam(value="food", required=true) String food,
 			@RequestParam(value="people", required=true) String people,
 			@RequestParam(value="mood", required=true) String mood) {
-		System.out.println("주능_ok 메서드로 연결");
 		
 		// 세션 정보 가져오기
 		HttpSession session = request.getSession();		
@@ -143,7 +142,7 @@ public class ExtraController {
 			
 			/** 데이터 저장하기 */
 			input.setId(loginSession.getId());
-			input.setAddress2("222"); // 뭐지..? 
+			input.setAddress2("222"); 
 			input.setJn_result(result);
 			
 			try {
