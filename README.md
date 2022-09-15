@@ -30,10 +30,6 @@
 - 사용자용 쇼핑 사이트 구현
 - 쇼핑몰 관리자 사이트 구현
 
-## 프로젝트 시연 페이지
-- Production(User) : http://itproject.ezenac.co.kr/surisulsul/
-- Production(Manage) : http://itproject.ezenac.co.kr/surisulsul/manage.do
-
 ## 참고용 ID & PW
 - ID : test@naver.com
 - PW : 123qwe!@#
